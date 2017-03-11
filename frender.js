@@ -9,10 +9,10 @@ var mongoose = require("mongoose");
 
 //////////////// TODO ////////////////
 //  Ping Heroku to keep app awake
-// var http = require("http");
-// setInterval( _ =>{
-//   http.get("www.frender.com")
-// }, 600000); // 600000 = every 10 minutes
+var http = require("http");
+setInterval( _ =>{
+  http.get("https://frender.herokuapp.com/")
+}, 600000); // 600000 = every 10 minutes
 
 // Setup Twitter API
 var Twitter = require("twitter");
