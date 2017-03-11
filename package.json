@@ -2,10 +2,10 @@
   "name": "twitter_bot_2",
   "version": "1.0.0",
   "description": "using Twitter node modlule",
-  "main": "index.js",
+  "main": "frender.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon frender.js"
   },
   "author": "Yeshwant Chillakuru",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "express": "^4.14.0",
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.1",
+    "nodemon": "^1.11.0",
     "twitter": "^1.4.0",
     "watson-developer-cloud": "^2.4.5"
   }
