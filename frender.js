@@ -16,7 +16,6 @@ var mongoose = require("mongoose");
 
 // Setup Twitter API
 var Twitter = require("twitter");
-var bluebird = require("bluebird");
 var twitterClient = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -27,14 +26,15 @@ var twitterClient = new Twitter({
 // Stream filters by keywords
 var options = {track: 'french'};
 var search = "statuses/filter";
+
 twitterClient.stream(search, options, (stream) => {
   console.log("streaming twitter feed");
 
-  stream.on("tweets", (tweet) =>{
-    console.log("Looks like you got a tweet");
+  stream.on("data", (tweet) =>{
+    console.log("+++++++++++++++ Looks like you got a tweet");
 
 
-    console.log(tweet.user.screen_name);
+    console.log(tweet.user.screen_name + ": " + tweet.text);
 
   })
 });
