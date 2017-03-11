@@ -70,7 +70,7 @@ function replyCareer(originalTweet){
 function replyTeach(originalTweet){
   twitterClient.post("statuses/update/", {status: "@" + originalTweet.user.screen_name + ": We're looking for teachers in US French Immersion programs! Are you interested???"}, function(err, response) {
     if (response) {
-      console.log('reply career successful: ' + response);
+      console.log('reply teach successful: ' + response);
     }
     // if there was an error while tweeting
     if (err) {
