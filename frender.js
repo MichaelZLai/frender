@@ -31,34 +31,17 @@ twitterClient.stream(search, options, (stream) => {
   console.log("streaming twitter feed");
 
   stream.on("data", (tweet) =>{
-    console.log("+++++++++++++++ Looks like you got a tweet");
-
+    console.log("+++++++++++++++");
 
     console.log(tweet.user.screen_name + ": " + tweet.text);
 
   })
 });
 
+function replyTweet(originalTweet, callback){
+  twitterClient.post("statuses/update/", {status: "@" + originalTweet.user.screen_name + ": Do you want to learn more about teaching french?"}, (req, res, err) =>{
+    console.log("reply to user");
 
-// pass in the search string, an options object, and a callback
-// var options = { count: 100};
-// var search = "french";
-//
-// var test = twitterClient.search(search, options, (data) =>{
-//   results = results.concat(data.statuses);
-//   options = {}
-//   options.max_id = data.statuses[ data.statuses.length - 1 ].id;
-//   options.count = 100;
-//
-//   twitterClient.search(search, options, (data) =>{
-//     results = results.concat(data.statuses);
-//     options = {}
-//     options.max_id = data.statuses[ data.statuses.length - 1 ].id;
-//     options.count = 100;
-//
-//     twitterClient.search(search, options, (data) =>{
-//       results = results.concat(data.statuses);
-//       // do stuff with your 300 total tweets
-//     }
-//   }
-// };
+
+  })
+}
