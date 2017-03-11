@@ -181,7 +181,6 @@ function reTweet(originalTweet, callback) {
 						return callback(error);
 				}
 				return callback(null);
-
 		});
 };
 

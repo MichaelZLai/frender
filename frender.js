@@ -24,7 +24,7 @@ var twitterClient = new Twitter({
 });
 
 // Stream filters by keywords
-var options = {track: 'french'};
+var options = {track: 'french career, french teach'};
 var search = "statuses/filter";
 
 twitterClient.stream(search, options, (stream) => {
@@ -33,15 +33,48 @@ twitterClient.stream(search, options, (stream) => {
   stream.on("data", (tweet) =>{
     console.log("+++++++++++++++");
 
-    console.log(tweet.user.screen_name + ": " + tweet.text);
+
+
+    // Check if tweet text contains "french career teaching"
+    if (tweet.text.includes("career")) {
+      console.log(tweet.user.screen_name + ": " + tweet.text);
+
+      replyCareer(tweet)
+
+    }
+
+    if (tweet.text.includes("teach")) {
+      console.log(tweet.user.screen_name + ": " + tweet.text);
+
+      replyTeach(tweet)
+
+    }
+
 
   })
 });
 
-function replyTweet(originalTweet, callback){
-  twitterClient.post("statuses/update/", {status: "@" + originalTweet.user.screen_name + ": Do you want to learn more about teaching french?"}, (req, res, err) =>{
-    console.log("reply to user");
+function replyCareer(originalTweet){
+  twitterClient.post("statuses/update/", {status: "@" + originalTweet.user.screen_name + ": We're looking for candidates in US French Immersion programs! Are you interested???"}, function(err, response) {
+    if (response) {
+      console.log('post successful: ' + response);
+    }
+    // if there was an error while tweeting
+    if (err) {
+      console.log('Something went wrong:' + err);
+    }
+  });
+}
 
 
-  })
+function replyTeach(originalTweet){
+  twitterClient.post("statuses/update/", {status: "@" + originalTweet.user.screen_name + ": We're looking for teachers in US French Immersion programs! Are you interested???"}, function(err, response) {
+    if (response) {
+      console.log('post successful: ' + response);
+    }
+    // if there was an error while tweeting
+    if (err) {
+      console.log('Something went wrong:' + err);
+    }
+  });
 }
