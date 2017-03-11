@@ -10,6 +10,7 @@
   "author": "Yeshwant Chillakuru",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "express": "^4.14.0",
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.1",
